@@ -15,9 +15,7 @@ import { Routes } from '@interfaces/routes.interface';
 import { ErrorMiddleware } from '@middlewares/error.middleware';
 import { logger, stream } from '@utils/logger';
 import { gameCron } from './scheduled/game';
-import path from 'path';
 
-__dirname = path.resolve();
 export class App {
   public app: express.Application;
   public env: string;
