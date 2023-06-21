@@ -17,6 +17,7 @@ import { logger, stream } from '@utils/logger';
 import { gameCron } from './scheduled/game';
 import path from 'path';
 
+__dirname = path.resolve();
 export class App {
   public app: express.Application;
   public env: string;
@@ -77,9 +78,9 @@ export class App {
         res.header('Content-Security-Policy', "script-src 'self' 'unsafe-eval';");
         next();
       });
-      console.log(path.join(__dirname, '../games'));
+      console.log(path.join(__dirname, 'games'));
 
-      this.app.use('/games', express.static(path.join(__dirname, '../games')));
+      this.app.use('/games', express.static(path.join(__dirname, 'games')));
     } catch (err) {
       console.log(err);
     }
