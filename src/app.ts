@@ -74,13 +74,13 @@ export class App {
       this.app.use(express.urlencoded({ extended: true }));
       this.app.use(cookieParser());
 
-      this.app.use(function (req, res, next) {
-        res.header('Content-Security-Policy', "script-src 'self' 'unsafe-eval';");
-        next();
-      });
-      console.log(path.join(__dirname, 'games'));
+      // this.app.use(function (req, res, next) {
+      //   res.header('Content-Security-Policy', "script-src 'self' 'unsafe-eval';");
+      //   next();
+      // });
+      // console.log(path.join(__dirname, 'games'));
 
-      this.app.use('/games', express.static(path.join(__dirname, 'games')));
+      // this.app.use('/games', express.static(path.join(__dirname, 'games')));
     } catch (err) {
       console.log(err);
     }
@@ -89,6 +89,10 @@ export class App {
   private initializeRoutes(routes: Routes[]) {
     routes.forEach(route => {
       this.app.use('/', route.router);
+    });
+    //hello world
+    this.app.use('/', (req, res) => {
+      res.send('Hello World!');
     });
   }
 
