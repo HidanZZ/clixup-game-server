@@ -2,7 +2,7 @@ var gameInit = function () {
   //get email from session storage
   var email = sessionStorage.getItem('email'); // localStorage.getItem("email");
 
-  const gameSrc = `https://your-web-host.com/games/daroneGame?email=${email}`;
+  const gameSrc = `https://clixup-game-server.onrender.com/games/daroneGame?email=${email}`;
 
   // Create iframe
   const iframe = document.createElement('iframe');
