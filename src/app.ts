@@ -15,6 +15,7 @@ import { Routes } from '@interfaces/routes.interface';
 import { ErrorMiddleware } from '@middlewares/error.middleware';
 import { logger, stream } from '@utils/logger';
 import { gameCron } from './scheduled/game';
+import path from 'path';
 
 export class App {
   public app: express.Application;
@@ -72,13 +73,13 @@ export class App {
       this.app.use(express.urlencoded({ extended: true }));
       this.app.use(cookieParser());
 
-      // this.app.use(function (req, res, next) {
-      //   res.header('Content-Security-Policy', "script-src 'self' 'unsafe-eval';");
-      //   next();
-      // });
-      // console.log(path.join(__dirname, 'games'));
+      this.app.use(function (req, res, next) {
+        res.header('Content-Security-Policy', "script-src 'self' 'unsafe-eval';");
+        next();
+      });
+      console.log(path.join(__dirname, 'games'));
 
-      // this.app.use('/games', express.static(path.join(__dirname, 'games')));
+      this.app.use('/games', express.static(path.join(__dirname, '../games')));
     } catch (err) {
       console.log(err);
     }
