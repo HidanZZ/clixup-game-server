@@ -1,5 +1,5 @@
 {
-  "name": "clixup game server",
+  "name": "clixup-game-server",
   "version": "0.0.0",
   "description": "TypeScript + Mongoose + MongoDB + Express API Server",
   "author": "",
