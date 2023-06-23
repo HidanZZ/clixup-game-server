@@ -17,6 +17,7 @@ export class GameRoute implements Routes {
   private initializeRoutes() {
     this.router.get(`${this.path}/:gameId/check-participation/:email`, this.game.checkParticipationAndAvailability);
     this.router.get(`${this.path}/:gameId/play/:email`, this.game.play);
+    this.router.get(`${this.path}/:gameId/tries/:email`, this.game.getTriesLeft);
     this.router.post(`${this.path}`, this.game.createGame);
   }
 }

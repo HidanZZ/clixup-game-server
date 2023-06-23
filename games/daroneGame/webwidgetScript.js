@@ -27,7 +27,7 @@ var gameInit = function () {
 
   // Function to resize game
   function resizeGame() {
-    const aspectRatio = 720 / 1280;
+    const aspectRatio = 1080 / 1920;
     const windowAspectRatio = window.innerWidth / window.innerHeight;
     if (windowAspectRatio > aspectRatio) {
       container.style.width = `${window.innerHeight * aspectRatio}px`;
