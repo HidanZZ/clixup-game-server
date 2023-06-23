@@ -3,7 +3,7 @@ const GODOT_CONFIG = {
   canvasResizePolicy: 2,
   executable: 'index',
   experimentalVK: false,
-  fileSizes: { 'index.pck': 32511472, 'index.wasm': 13793958 },
+  fileSizes: { 'index.pck': 32511968, 'index.wasm': 13793958 },
   focusCanvas: true,
   gdnativeLibs: [],
 };
