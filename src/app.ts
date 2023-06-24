@@ -70,14 +70,6 @@ export class App {
       this.app.use(helmet({
     contentSecurityPolicy: {
       directives: {
-        defaultSrc: ["'self'"],
-        scriptSrc: ["'self'"],
-        styleSrc: ["'self'"],
-        imgSrc: ["'self'"],
-        connectSrc: ["'self'"],
-        fontSrc: ["'self'"],
-        objectSrc: ["'none'"],
-        mediaSrc: ["'self'"],
         frameAncestors: ["'*'"],
       },
     },
