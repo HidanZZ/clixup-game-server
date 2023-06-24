@@ -67,16 +67,27 @@ export class App {
 
       this.app.use(cors({ origin: ORIGIN, credentials: CREDENTIALS }));
       this.app.use(hpp());
-      this.app.use(helmet());
+      this.app.use(helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'"],
+        styleSrc: ["'self'"],
+        imgSrc: ["'self'"],
+        connectSrc: ["'self'"],
+        fontSrc: ["'self'"],
+        objectSrc: ["'none'"],
+        mediaSrc: ["'self'"],
+        frameAncestors: ["'*'"],
+      },
+    },
+  }));
       this.app.use(compression());
       this.app.use(express.json());
       this.app.use(express.urlencoded({ extended: true }));
       this.app.use(cookieParser());
 
-      this.app.use(function (req, res, next) {
-        res.header('Content-Security-Policy', "script-src 'self' 'unsafe-eval';");
-        next();
-      });
+      
       console.log(path.join(__dirname, 'games'));
 
       this.app.use('/games', express.static(path.join(__dirname, '../games')));
