@@ -3,9 +3,12 @@ import { Container } from 'typedi';
 import { Game } from '@interfaces/games.interface';
 import { GamesService } from '@/services/games.service';
 import { UserService } from '@/services/users.service';
+import { PrizeLogService } from '@/services/prizeLog.service';
+import { PrizeLog } from '@/interfaces/prizeLog.interface';
 
 export class GameController {
   public game = Container.get(GamesService);
+  public prizeLog = Container.get(PrizeLogService);
   public userService = Container.get(UserService);
   public checkParticipationAndAvailability = async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -129,6 +132,15 @@ export class GameController {
       // Save user and game
       await this.userService.updateUser(user._id, user);
       await this.game.updateGame(gameId, game);
+
+      const log: PrizeLog = {
+        gameId,
+        prize: prize,
+        userEmail: email,
+      };
+
+      // Save the prize log
+      await this.prizeLog.create(log);
 
       // Send the prize to the user
       res.json({ prize, message: 'Congratulations! You have won a prize.', triesLeft: game.playLimitPerUser - gameParticipation.timesPlayed });

@@ -56,6 +56,7 @@ export class App {
     }
     try {
       await connect(dbConnection.url, dbConnection.options);
+      console.log('Database connected');
     } catch (err) {
       console.log(err);
     }
