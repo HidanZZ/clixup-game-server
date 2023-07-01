@@ -52,7 +52,8 @@ export class GamesService {
       const start = new Date(game.startDate);
       const end = new Date(game.endDate);
       const today = new Date();
-      if (today < start || today > end) {
+      if (today >= start && today <= end) {
+        console.log('resetting daily limits for game', game._id);
         for (const prize of game.prizes) {
           // Add the unused prizes to the next day's limit
           prize.rules.dailyLimit += prize.rules.originalDailyLimit;
