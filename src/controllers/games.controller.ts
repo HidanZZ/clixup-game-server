@@ -137,6 +137,7 @@ export class GameController {
         gameId,
         prize: prize,
         userEmail: email,
+        timestamp: new Date(),
       };
 
       // Save the prize log

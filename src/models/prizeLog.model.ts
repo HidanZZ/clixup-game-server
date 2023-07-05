@@ -11,7 +11,6 @@ const prizeLogSchema = new Schema({
   timestamp: {
     //the date in which the document was created
     type: Schema.Types.Date,
-    default: new Date(),
   },
   prize: prizeSchema,
 });
